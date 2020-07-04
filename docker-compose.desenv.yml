@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+        taxajurosapi:
+                container_name: taxajurosapi
+                build:
+                        context: .
+                        dockerfile: TaxaJurosApi.Dockerfile
+                ports:
+                        - "5000:5000"
+                restart: always
+                environment:
+                        - ASPNETCORE_ENVIRONMENT=Development
+                        - ASPNETCORE_URLS=http://+:5000
+        calculojurosapi:
+                container_name: calculojurosapi
+                build:
+                        context: .
+                        dockerfile: CalculoJurosApi.Dockerfile
+                ports:
+                        - "5002:5002"
+                restart: always
+                environment:
+                        - ASPNETCORE_ENVIRONMENT=Development
+                        - ASPNETCORE_URLS=http://+:5002
